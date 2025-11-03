@@ -19,7 +19,7 @@
             background: #000;
             overflow: hidden;
         }
-        /* 移除静态文字样式（保留其他样式） */
+
         /* 爱心跳动动画 */
         #heart, #pinkboard1, #pinkboard2 {
             animation: heartBeat 1.5s ease-in-out infinite;
@@ -29,6 +29,24 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(0.9); }
         }
+
+        .heart-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff3366;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+            z-index: 10;
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
         .music-btn {
             position: fixed;
             top: 25%;
@@ -58,7 +76,7 @@
 </head>
 <body>
     <a class="music-btn" onclick="toggleMusic()">播放</a>
-    <!-- 已删除中间停着的大字（p标签和#name标签） -->
+    <div class="heart-text">20岁啦！宝贝生日快乐！</div>
     <canvas id="heart"></canvas>
     <canvas id="pinkboard1"></canvas>
     <canvas id="stars"></canvas>
@@ -777,7 +795,7 @@
             floatCtx.font = `${180 * this.scale}px "微软雅黑"`;
             floatCtx.fillStyle = colors[i % colors.length];
             floatCtx.fillText(
-                "20岁啦！生日快乐呀，小哒科",
+                "祝哒科新想事晨!",
                 this.x - this.width * 0.5,
                 this.y - this.height * 0.5,
                 this.width,
